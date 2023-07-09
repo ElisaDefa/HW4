@@ -25,4 +25,8 @@ THEN I can save my initials and score
 ### Screenshot of the Webpage:
 <img width="518" alt="READMESS3.png" src="READMESS3.png">
 
+### Important Notes:
+CSS Design is not of my authority, it is referenced from https://codepen.io/mina-mounir/pen/gOPppdv 
+and was modified to this use case and user story needs.
+
 ### Here's the link to the deployed Webpage:
