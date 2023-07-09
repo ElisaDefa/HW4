@@ -1,0 +1,43 @@
+:root {
+    --red: #6A1C0F;
+    --gold: #BD9865;
+    --neonBlack: #121313;
+    --white: rgba(255, 255, 255, 0.951);
+    --navy: rgb(33, 33, 103);
+    --font: monospace;
+}
+
+body {
+    position: absolute;
+    padding-left: 25%;
+    padding-top: 10%;
+    line-height: 1.5;
+  }
+
+h1 {
+ font-family: var(--font);
+ border: solid 1.5px var(--gold);
+ color: var(--gold);
+}
+
+p {
+ font-family: var(--font);
+ font-size: 20px;
+ color: var(--gold);
+}
+
+.buttonColor:hover {
+    font-family: var(--font);
+    background-color: var(--navy);
+    color: var(--white);
+}
+
+.questionFormat {
+    padding: 10px;
+    font-family: cursive;
+    font-size: 30px;
+}
+
+#buttonAnswer {
+        padding:0px 2px opx 2px;
+}
