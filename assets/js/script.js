@@ -40,7 +40,6 @@ function sortQuestions() {
 
 }
 
-
 optionsButton.addEventListener("click", function(event) {
     var element = event.target;
     if (element.matches("button") === true) {
@@ -69,7 +68,6 @@ function startTimer() {
     sortQuestions();
 
 };
-
 
 theTimer.addEventListener('click', startTimer);
 //listens for the answer from buttons & change for next question (and decrease time if wrong)
