@@ -6,6 +6,10 @@ body {
     background: #CCC
 }
 
+#buttonAnswer {
+    display: flex;
+}
+
 .center {
     position: absolute;
     top: 50%;

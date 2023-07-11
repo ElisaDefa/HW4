@@ -3,6 +3,7 @@ var theTimer = document.querySelector('#Timer');
 var messageTimer = document.querySelector('#printTimer');
 var questionPrint = document.querySelector('#questionFormat');
 var optionsButton = document.querySelector('#buttonAnswer');
+var gameOverScoreBoard = document.querySelector('#score');
 var questionIndex = 0;
 
 var questions = [
@@ -17,60 +18,75 @@ var questions = [
         correct: 'var eight = 8'
     }
 ]
-//console.log(questions[0].questionText);
-//console.log(questions[1].options[1]);
 
-//Our time is of 60s
-var secondsLeft = 60;
+//Our time is of 30s
+var secondsLeft = 30;
 
 //this function is pirnting in the obj the first set of options for first question
 function sortQuestions() {
-    //creating var to make it less repeatable 
     var currentQuestion = questions[questionIndex];
+    //creating var to make it less repeatable 
     questionPrint.textContent = currentQuestion.questionText;
+    optionsButton.innerHTML = "";
     for (var i = 0; i < currentQuestion.options.length; i++ ) {
-        console.log(currentQuestion.options[i]);
         var buttonAnswer = document.createElement("button");
         buttonAnswer.textContent = currentQuestion.options[i];
         buttonAnswer.setAttribute("class","answers");
         buttonAnswer.setAttribute("value",currentQuestion.options[i]);
         optionsButton.appendChild(buttonAnswer);
-      
     }
-
 }
+
+//variable to store score information
+var score = 0;
+var stopQuerying = 1;
 
 optionsButton.addEventListener("click", function(event) {
     var element = event.target;
-    if (element.matches("button") === true) {
-        var index = element.parentElement.getAttribute("value");
-        questions[questionIndex].options.splice(index, 1);
+    if (element.matches("button") === false) {
+        return;
     }
-    // var storeAnswers = buttonAnswer.getItem(questions[questionIndex].options.value);
-    // console.log(storeAnswers);
-
+    console.log("This is stop" + stopQuerying);
+    if (stopQuerying === questions.length) {
+        gameOver();
+    } else {
+        if (element.value !== questions[questionIndex].correct) {
+            secondsLeft = secondsLeft-5;
+        }
+        if (element.value === questions[questionIndex].correct) {
+            score = score+1;
+            console.log("This is the score" + score);
+        }
+        sortQuestions();
+        questionIndex++;
+        stopQuerying++;
+    }
 });
 
 function startTimer() {
-    //console.log(questions[questionIndex].questionText);
-    //questionIndex++;
     //set timer
     var timerInterval = setInterval(function() {
     secondsLeft--;
-    console.log(secondsLeft);
-        if(secondsLeft === 0) {
+        if(secondsLeft === 0 ) {
             //Stops execution of action at set interval
             clearInterval(timerInterval);
-            messageTimer.innerHTML = ("");
+            gameOver();
         }
     messageTimer.innerHTML = 'You have ' + secondsLeft;
     },1000)
     sortQuestions();
-
 };
 
+//function to stop game
+function gameOver() {
+    theTimer.innerHTML = ("");
+    messageTimer.innerHTML = ("");
+    questionPrint.innerHTML = ("");
+    optionsButton.innerHTML = ("");
+    gameOverScoreBoard.textContent = ("Your score is " + score);
+}
+
 theTimer.addEventListener('click', startTimer);
-//listens for the answer from buttons & change for next question (and decrease time if wrong)
 
 
 
