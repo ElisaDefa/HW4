@@ -22,11 +22,19 @@ WHEN all questions are answered or the timer reaches 0
 THEN the game is over
 WHEN the game is over
 THEN I can save my initials and score
-### Screenshot of the Webpage:
-<img width="518" alt="READMESS3.png" src="READMESS3.png">
+## Screenshots of the Webpage:
+### Start of the game -->
+<img width="518" alt="READMESS4_1.png" src="READMESS4_1.png">
 
-### Important Notes:
-CSS Design is not of my authority, it is referenced from https://codepen.io/mina-mounir/pen/gOPppdv 
-and was modified to this use case and user story needs.
+### Playing the game -->
 
-### Here's the link to the deployed Webpage:
+<img width="518" alt="READMESS4_2.png" src="READMESS4_2.png">
+
+### Game Over -->
+<img width="518" alt="READMESS4_3.png" src="READMESS4_3.png">
+
+## Important Notes:
+CSS Design is not of mine entirely, it is referenced from https://codepen.io/mina-mounir/pen/gOPppdv 
+and was modified to this use case and user story needs by me.
+
+## Here's the link to the deployed Webpage:

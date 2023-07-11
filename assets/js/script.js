@@ -1,11 +1,13 @@
-//Selects element by id for Timer
 var theTimer = document.querySelector('#Timer');
 var messageTimer = document.querySelector('#printTimer');
 var questionPrint = document.querySelector('#questionFormat');
 var optionsButton = document.querySelector('#buttonAnswer');
 var gameOverScoreBoard = document.querySelector('#score');
+var input = document.querySelector(".initials");
+input.style.display = "none"
 var questionIndex = 0;
 
+//object for questions, options and answer
 var questions = [
     {
         questionText: 'Which of the following variables is string not a number?',
@@ -16,6 +18,11 @@ var questions = [
         questionText: 'Which of the following variables is a number?',
         options:['var eight = 8','cons eight = "10"', 'var eight = eight', 'None of the above'],
         correct: 'var eight = 8'
+    },
+    {
+        questionText: '',
+        options:'',
+        correct: ''
     }
 ]
 
@@ -37,9 +44,11 @@ function sortQuestions() {
     }
 }
 
-//variable to store score information
+//variable to store score information and stopper
 var score = 0;
 var stopQuerying = 1;
+
+//function to handle answers on click
 
 optionsButton.addEventListener("click", function(event) {
     var element = event.target;
@@ -57,17 +66,19 @@ optionsButton.addEventListener("click", function(event) {
             score = score+1;
             console.log("This is the score" + score);
         }
-        sortQuestions();
         questionIndex++;
         stopQuerying++;
+        sortQuestions();
     }
 });
 
+//Time function for game
 function startTimer() {
+    theTimer.style.display = "none"
     //set timer
     var timerInterval = setInterval(function() {
     secondsLeft--;
-        if(secondsLeft === 0 ) {
+        if(secondsLeft === 0 || questionIndex === 2) {
             //Stops execution of action at set interval
             clearInterval(timerInterval);
             gameOver();
@@ -84,6 +95,8 @@ function gameOver() {
     questionPrint.innerHTML = ("");
     optionsButton.innerHTML = ("");
     gameOverScoreBoard.textContent = ("Your score is " + score);
+    input.style.display = "block"
+    var initals = input.value
 }
 
 theTimer.addEventListener('click', startTimer);
